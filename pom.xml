@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.4.RELEASE</version>
+        <version>2.3.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.mqz.better.registry</groupId>
@@ -34,6 +34,7 @@
             <version>${mars.validation.version}</version>
         </dependency>
 
+
         <!-- 基础包 -->
         <dependency>
             <groupId>com.mqz.mars.base</groupId>
@@ -42,20 +43,20 @@
             <!-- 注意： mars-bast的springboot是2.3+适配的okhttp3版本是4.4.1，这里排除了这个okhttp3，使用4.2.1适配当前springboot版本 -->
             <!-- 否则异常： Could not initialize class okhttp3.OkHttpClient  -->
             <!-- 否则异常： NoSuchMethodError kotlin.collections.ArraysKt.copyInto([B[BIII)[B  -->
-            <exclusions>
+            <!--<exclusions>
                 <exclusion>
                     <groupId>com.squareup.okhttp3</groupId>
                     <artifactId>okhttp</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions>-->
         </dependency>
 
         <!-- Okhttp ===start===-->
-        <dependency>
+        <!--<dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
             <version>4.2.1</version>
-        </dependency>
+        </dependency>-->
         <!-- Okhttp ===end===-->
 
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->

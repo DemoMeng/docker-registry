@@ -4,6 +4,8 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
+import java.io.Serializable;
+
 /**
  *  版权所有 © Copyright 2012<br>
  *
@@ -14,12 +16,11 @@ import org.springframework.context.annotation.Configuration;
  */
 @Data
 @Configuration
-public class ConfigProperty {
+public class ConfigProperty implements Serializable {
 
     @Value("${docker.registry.url:http://192.168.2.11:5040/v2/_catelog}")
     private String registryUrl;
 
     @Value("${docker.registry.port:5040}")
     private String port;
-
 }

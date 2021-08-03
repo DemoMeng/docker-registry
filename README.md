@@ -13,14 +13,14 @@
      
      解决办法： 
         macOS：
-            ![img.png](images/img.png)
-       
-        其他：
-            ![img_1.png](images/img_1.png)
 ````
-
+![img.png](images/img.png)
+````
+        其他：
+````
+![img_1.png](images/img_1.png)
+````
 ### 推送镜像到私库：
-
 ````
  原始镜像：
     a. docker pull **
@@ -44,6 +44,18 @@
   
   
   
+
+````
+
+
+
+### lombok对应springBoot版本：TODO
+
+````
+
+     1.18.6  ===> 2.1.4
+     1.18.16 ===> 2.3.5.RELEASE  
+     
 
 ````
 
