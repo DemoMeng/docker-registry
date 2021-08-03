@@ -27,3 +27,15 @@ docker:
   registry:
     url: http://192.168.2.11:5040
     port: 5040
+
+spring:
+  #resource 静态文件
+  resources:
+    static-locations: classpath:static/,file:static/
+
+  thymeleaf:
+    cache: true
+  #服务器时间时区问题
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss

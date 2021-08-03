@@ -1,0 +1,107 @@
+/* CSS Document */
+#user_create_logo{
+		width:112px;
+		height:52px;
+		background-image:url(../images/user_create_index_logo.png);
+		background-color:#f1f1f1;
+		background-repeat:no-repeat;
+		float:left;
+		margin-left:30px;
+	}
+	#user_create{
+		width:45%;
+		height:650px;
+		background-color:#FFFFFF;
+		margin-top:60px;
+		-webkit-border-radius:6px;
+		box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.1);
+	}
+	#user_create_top{
+		float:left;	
+		position:relative;
+		top:60px;
+		background-color:#FFFFFF;
+		width:100%;
+		height:40px;
+	}
+	#user_create_detail{
+		font-family:'微软雅黑';
+		font-size:18px;
+		/*color:#969696;*/ /*当鼠标焦点失去的时候*/
+		color:#EA6F5A;
+		margin-left:15px;
+		border-bottom-style:solid;
+		border--bottom-width:2px;
+		padding-bottom:10px;
+	}
+	#user_login_detail{
+		font-family:'微软雅黑';
+		font-size:18px;
+		color:#969696;
+		margin-right:15px;
+		/*
+		color:#EA6F5A;
+		font-weight:bold; 
+		border-bottom-style:solid;
+		border--bottom-width:thick;
+		padding-bottom:10px;
+		*/		/* 这里是是用点击事件进行切换之后需要变化相关的样式*/
+	}
+	#user_login_detail:hover{
+		border-bottom-style:solid;
+		border-bottom-color:#EA6F5A;
+		border-bottom-width:3px;
+		padding-bottom:10px;
+	}
+	
+	
+	#user_create_leave{
+		float:left;	
+		position:relative;
+		top:110px;
+		background-color:;
+		width:100%;
+		height:400px;
+	}
+	
+	.user_create_input{
+		background-color:#f8f8f8;
+		-webkit-border-radius:5px;
+		height:50px;
+		width:55%;
+		height:50px;
+		border:1px solid #c8c8c8;
+		text-indent:40px;
+		font-family:"微软雅黑";
+		font-size:14px;
+		color:#969696;
+	}
+	/*记得点击文本框的时候去除文本框的值*/
+	.user_create_input:focus{
+		background-color:;
+		border:1px solid #f8f8f8;
+		color:#000000;                         
+	}
+	.user_create_logo{
+		position:relative;
+		top:10px;
+		left:43px;
+		height: 31px;
+	}
+	#user_create_input_submit{
+		background-color:#42C02E;
+		width:55%;
+		height:50px;
+		-webkit-border-radius:5px;
+		border:1px solid #c8c8c8;
+		color:#FFFFFF;
+		font-family:"微软雅黑";
+		font-size:21px;
+		margin-top:10px;
+		margin-left:37px;
+	}
+	#user_create_input_submit:hover{
+		background-color:#3db922;
+		cursor:pointer;
+	}
+

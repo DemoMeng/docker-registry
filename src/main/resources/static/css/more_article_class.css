@@ -1,0 +1,113 @@
+/* CSS Document */
+.more_writer_left_top{
+	-webkit-border-radius:10px;
+	background-color:#f8f8f8; 
+	width:320px; 
+	height:280px; 
+	float:left;
+}
+.more_writer_left_top:hover{
+	z-index: 2;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+	-webkit-transform: translate3d(0, -2px, 0);
+	transform: translate3d(0, -2px, 0);
+}
+.more_writer_left_top:hover .care_writer_button{
+	width:130px;
+	transition: all 0.3s;
+}
+
+
+
+.more_writer_left{
+	-webkit-border-radius:10px;
+	background-color:#f8f8f8; 
+	width:320px; 
+	height:280px; 
+	float:left;
+	margin-top:50px;
+}
+.more_writer_left:hover{
+	z-index: 2;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+	-webkit-transform: translate3d(0, -2px, 0);
+	transform: translate3d(0, -2px, 0) 
+}
+.more_writer_left:hover .care_writer_button{
+	width:130px;
+	transition: all 0.3s;
+}
+
+
+.more_writer_right_top{
+	-webkit-border-radius:10px;
+	background-color:#f8f8f8; 
+	width:320px; 
+	height:280px; 
+	float:right;
+	
+}
+.more_writer_right_top:hover{
+	z-index: 2;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+	-webkit-transform: translate3d(0, -2px, 0);
+	transform: translate3d(0, -2px, 0) 
+}
+.more_writer_right_top:hover .care_writer_button{
+	width:130px;
+	transition: all 0.3s;
+}
+.more_writer_right{
+	-webkit-border-radius:10px;
+	background-color:#f8f8f8; 
+	width:320px; 
+	height:280px; 
+	float:right;
+	margin-top:50px;
+}
+.more_writer_right:hover{
+	z-index: 2;
+	box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+	-webkit-transform: translate3d(0, -2px, 0);
+	transform: translate3d(0, -2px, 0) 
+}
+.more_writer_right:hover .care_writer_button{
+	width:110px;
+	transition: all 0.4s;
+}
+
+
+.care_writer_button{
+		background-color:#f8f8f8;
+		width:100px;
+		height:25px;
+		margin-top:10px;
+		border:1px solid gray;
+		-webkit-border-radius:50px;
+		padding-top:5px;
+		
+
+}
+
+#more div{
+		color:#FFFFFF;			
+		background-color:#A5A5A5;
+		width:65%;
+		height:35px;
+		margin-top:50px;
+		-webkit-border-radius:6px;
+		font-family:'微软雅黑';
+		font-size:15px;
+		padding-top:10px;
+		float:left;
+		margin-left:17.5%;
+		margin-bottom:50px;
+}
+
+#more div:hover{
+		background-color:#9b9b9b;
+}
+
+
+
+

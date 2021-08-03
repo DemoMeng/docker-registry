@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+#aritcle_submit_btn{
+	-webkit-border-radius:10px;	
+	position:absolute;
+	top:90px;
+	right:30px;
+	width:100px;
+	height:35px;
+	background-color:#42c02e;
+	text-align:center;
+	padding-top: 15px;
+	color:white;
+}
+#aritcle_submit_btn:hover{
+	background-color:#3db922;
+	cursor:pointer;
+}

@@ -1,0 +1,525 @@
+/* CSS Document */
+#go_to_top{
+		-webkit-border-radius:6px;
+		border-style:solid;
+		border-width:1px;
+		border-color:#CCCCCC;
+		width:55px;
+		height:45px;
+		position:fixed;
+		top:530px;
+		right:55px;
+		text-align:center;
+		font-family:"微软雅黑";
+		color:#4e7ab9;
+		font-size:23px;
+		padding-top:5px;
+		display:none;
+	}
+	#go_to_top:hover{
+		background-color:#f8f8f8;
+	}
+	
+
+
+	#index_top{
+			position:fixed;
+			top:0xp;
+			left:0px;
+			background-color:white;
+			width:100%;
+			height:70px;
+			border-bottom-style:ridge;
+			border-bottom-width:thin;
+			margin-top:-10px;
+			margin-bottom:31px;
+			z-index:100;
+	}
+	#index_top_logo{
+			width:100px;
+			height:50px;
+			background-image:url(../images/index_logo.png);
+			background-repeat:no-repeat;
+			position:absolute;
+			top:20px;
+			left:15px;
+	}
+	.index_top_logo_font{
+			font-size:16px;
+			font-family:"微软雅黑";
+			text-decoration:none;
+			color:#ea6f5a;
+	}
+	
+	#index_top_one{
+		float:left;
+		margin-top:25px;
+		margin-left:155px;	
+	}
+	#index_top_serach{
+		float:left;
+		margin-top:10px;
+		margin-left:50px;
+	}
+	#index_top_serach_text{
+		-webkit-border-radius:8px;
+		border:2px ridge #eeeeee;
+		width:150px;
+		height:30px;
+		font-family:"微软雅黑";
+		font-size:16px;
+		color:#8A8A8A;
+		padding-left:5px;
+		transition:width 0.5s,transform 5s;
+	}
+	#index_top_serach_text:focus{
+		
+		-webkit-border-radius:3px;
+		width:240px;
+		height:30px;
+		color:black;
+	}
+	#index_top_serach_img{
+		position:relative;
+		top:10px;
+		right:-3px;
+	}
+	
+	
+	#index_top_downloadapp{
+		float:left;		
+		margin-top:25px;
+		margin-left:50px;	
+	}
+	.index_top_downloadapp_font{
+			font-size:16px;
+			font-family:"微软雅黑";
+			text-decoration:none;
+			color:#969696;
+	}
+	
+	#index_top_write{
+		-webkit-border-radius:6px;
+		background-color:#ec6149;
+		width:100px;
+		height:50px;
+		float:right;
+		margin-top:10px;
+		margin-right:10px;
+		cursor:pointer;	
+	}
+	#index_top_create{
+		-webkit-border-radius:6px;
+		background-color:#ffffff;
+		border:1.5px solid #ec6149;
+		width:100px;
+		height:50px;
+		float:right;
+		margin-top:10px;
+		margin-right:20px;
+		cursor:pointer;	
+	}
+	#index_top_create:hover{
+		background-color:#fef7f6;
+	}
+	
+	.index_top_login_font{
+			font-size:16px;
+			font-family:"微软雅黑";
+			text-decoration:none;
+			color:#969696;
+	}
+	
+	#index_top_login{
+		float:right;
+		margin-top:25px;
+		margin-right:30px;
+	}
+	/* 设置用户是否进行退出的相关样式 */
+	.user_about:hover{
+		opacity:0.95;
+	}
+	
+	.my_items:hover{
+		cursor: pointer;
+		background-color: #f5f5f5;
+	}
+	
+	
+	
+	
+	#index_top_create_font{
+		position:relative;
+		top:15px;
+		left:34px;
+		color:#ec6149;
+		font-family:"微软雅黑";
+	}
+	
+	#index_top_changeFont{
+		float:right;	
+		margin-top:25px;
+		margin-right:25px;
+	}
+	#index_top_changeFont_one:hover{
+		cursor:pointer;
+	}
+	.change_background_switch{
+		float:left; font-family:'微软雅黑';
+		font-size:16px;
+		background-color:#6DACF4;
+		color:#FFFFFF;
+		border-style:solid;
+		border-width:1px;
+		border-color:#969696;
+		width:40px;
+		height:35px;
+		position:relative;
+		top:-10px;
+		left:10px;
+		padding-top:10px;
+		text-decoration:none;
+		-webkit-border-radius:3px;
+	}
+	
+	.index_top_changeFont_two{
+		font-size:19px;
+		float:left;
+		width:80px;
+		height:35px;
+		padding-top:10px;
+		border-style:solid;
+		border-width:1px;
+		border-color:#969696;
+		background-color:#6DACF4;
+	}
+	.index_top_changeFont_two:hover{
+		cursor:pointer;
+	}
+	
+	.index_top_changeFont_two:first-child{
+		margin-left:60px;
+	}
+	
+	
+	
+	
+	
+	/*写文章图片*/
+	#index_top_write_img{
+		margin-top:10px;
+		margin-left:5px;			
+	}
+	
+	/*设置首页的主体内容的左边部分*/
+	#index_body{
+      /*这里是需要删除的背景颜色的部分*/
+		width:70%;	
+		height:1000px;		
+	}
+	
+	#index_body_left{
+		
+		width:533px;
+		background-color:;     /*这里是需要删除的左边图片轮播的部分的背景颜色*/
+		float:left;
+		/* height:2222px; */
+	}
+	/*设置网页左边部分的图片轮播下的专题部分*/
+	.index_body_left_top{
+		float:left;
+		margin-left:20px;
+		margin-top:20px;
+		font-family:"微软雅黑";
+		font-size:14px;
+		color:#FFFFFF;
+		width:66px;
+		height:66px;
+		-webkit-border-radius:10px;
+		opacity:1;
+	}
+	
+	/*设置当鼠标移上去的时候专题发生相对应的变化*/
+	#topic_one{
+		transition: all 0.5s;
+	}
+	#topic_one:hover{
+		transform: scale(1.2);
+	}
+	#topic_two{
+		transition: all 0.5s;
+	}
+	#topic_two:hover{
+		transform: scale(1.2);
+	}
+	#topic_three{
+		transition: all 0.5s;
+	}
+	#topic_three:hover{
+		transform: scale(1.2);
+	}
+	#topic_four{
+		transition: all 0.5s;
+	}
+	#topic_four:hover{
+		transform: scale(1.2);
+	}
+	#topic_five{
+		transition: all 0.5s;
+	}
+	#topic_five:hover{
+		transform: scale(1.2);
+	}
+	#topic_six{
+		transition: all 0.5s;
+	}
+	#topic_six:hover{
+		transform: scale(1.2);
+	}
+	
+	/*设置专题下面的具体作者发表的文章*/
+	.article{
+		background-color:;
+		width:100%;
+		height:200px;
+		float:left;
+		margin-top:20px;
+		border-bottom-style:ridge;
+		border-bottom-width:thin;
+	}
+	#more_article{
+		background-color:#A5A5A5;
+		width:100%;
+		height:30px;
+		float:left;
+		margin-top:20px;
+		color:#ffffff;
+		padding-top:10px;
+		-webkit-border-radius:5px;
+		margin-bottom:60px;
+	}
+	.more_article{
+		background-color:#A5A5A5;
+		width:100%;
+		height:30px;
+		float:left;
+		margin-top:20px;
+		color:#ffffff;
+		padding-top:10px;
+		-webkit-border-radius:5px;
+		margin-bottom:60px;
+	}
+	
+	
+	#more_article:hover{
+		background-color:#9B9B9B;
+		cursor:pointer;
+	}
+	#more_article1{
+		background-color:#A5A5A5;
+		width:100%;
+		height:30px;
+		float:left;
+		margin-top:20px;
+		color:#ffffff;
+		padding-top:10px;
+		-webkit-border-radius:5px;
+		margin-bottom:60px;
+	}
+	
+	
+
+	
+	
+	
+	.article_writer_info_pic{
+		width:32px;
+		height:32px;
+		-webkit-border-radius:50px;
+		float:left;
+		position:relative;
+		top:1px;
+		left:1px;
+	}
+	.article_writer_info_nicknanme{
+		float:left;
+		font-family:"微软雅黑";
+		color:#191919;
+		font-size:14px;
+		position:relative;
+		top:1px;
+		left:10px;
+	}
+	.article_writer_info_time{
+		float:left;
+		font-family:"微软雅黑";
+		color:#A2A2A2;
+		font-size:10px;
+		position:relative;
+		top:2px;
+		left:20px;
+	}
+	/*设置更多作者的的相关样式*/
+	#more_writers{
+		text-decoration:none;
+	}
+	#more_writers div{
+		color:#787878;			
+		background-color:#dcdcdc;
+		width:90%;
+		height:35px;
+		margin-top:50px;
+		-webkit-border-radius:6px;
+		font-family:'微软雅黑';
+		font-size:15px;
+		padding-top:10px;
+	}
+	
+	
+	
+	
+	.article_title{
+		width:100%;
+		height:25px;
+		font-family:"微软雅黑";
+		font-size:20px;
+		text-align:left;
+		color:#000000;
+	} 
+	.article_content{
+		float:left;
+		width:400px;
+		margin-top:10px;
+		text-align:left;
+		font-family:"微软雅黑";
+		color:#000000;
+		font-size:13px;
+	}
+	.article_comment{
+		
+	}
+	.article_class{
+		-webkit-border-radius:3px;
+		border-style:solid;
+		border-width:thin;
+		border-color:#f08f7e;
+		color:#f08f7e;
+		font-family:'微软雅黑';
+		font-size:13px;
+		margin-top:10px;
+		float:left;
+		padding:4px;
+	}
+	.article_read{
+		margin-top:15px;
+		margin-left:15px;
+		float:left;
+		font-family:"微软雅黑";
+		font-size:13px;
+		color:#A2A2A2;
+	}
+	.article_comment_count{
+		margin-top:15px;
+		margin-left:15px;
+		float:left;
+		font-family:"微软雅黑";
+		font-size:13px;
+		color:#A2A2A2;
+	}
+	.article_good{
+		margin-top:15px;
+		margin-left:15px;
+		float:left;
+		font-family:"微软雅黑";
+		font-size:13px;
+		color:#A2A2A2;
+	
+	}
+	.article_praise{
+		margin-top:15px;
+		margin-left:15px;
+		float:left;
+		font-family:"微软雅黑";
+		font-size:13px;
+		color:#A2A2A2;
+	}
+						
+	
+	
+	
+	#index_body_right{
+		width:22%;
+		height:755px;
+		float:right;
+	}
+	.index_body_right_a{
+		margin-bottom:10px;
+	}
+	
+	/*设置首页的主体内容的右边部分*/
+	
+	#index_body_right_downloadapponeimg{    /*设置下载应用的扫码入口*/
+		position:relative;
+		top:-40px;
+		left:8px;
+		cursor:pointer;
+	}
+	#index_body_right_downloadapponeimg img{	/*设置app下载的按钮图片的圆角边框*/
+		-webkit-border-radius:6px;
+	}
+	#index_body_right_downloadapptwoimg{        /*设置下载安卓应用的app图片按钮*/
+		position:relative;
+		top:-40px;
+		left:15px;
+		cursor:pointer;
+	}
+	
+	
+	#index_body_right_downloadapptwoimg img{	/*设置app下载的按钮图片的圆角边框*/
+		-webkit-border-radius:6px;
+	}
+	
+	/*设置二维码所在的位置，需要使用到jquery，当鼠标放在扫码的图片按钮的时候需要显示二维码。*/
+	#index_body_right_downloadapponeimg_code{
+		position:absolute;
+		top:375px;
+		left:910px;
+		z-index:10;
+	}
+	
+	
+	/*设置字体，使用类选择器*/
+	.font_writer{
+		font-family:"微软雅黑";
+		font-size:15px;
+		color:#C0a3a3;
+	}	
+	
+	/*设置签约作者div的相关的样式*/
+	.writer_pic{
+		float:left;
+		margin-left:3px;
+		width:48px;
+		height:48px;
+	}
+	.writer_img{
+		-webkit-border-radius:50px;
+	}
+	.writer_name{
+		float:left;
+		position:relative;
+		top:2px;
+		left:10px;
+		font-family:"微软雅黑";
+		font-size:13px;
+	}
+	.writer_about{
+		float:left;
+		position:relative;
+		top:10px;
+		left:10px;
+		font-family:"微软雅黑";
+		color:#999999;
+		font-size:10px;
+	}
+
