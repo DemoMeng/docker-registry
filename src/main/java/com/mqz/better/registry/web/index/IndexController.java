@@ -1,9 +1,7 @@
 package com.mqz.better.registry.web.index;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import java.io.IOException;
 /**
  *  版权所有 © Copyright 2012<br>
  *
@@ -16,16 +14,24 @@ import java.io.IOException;
 @RequestMapping(value = "/index")
 public class IndexController {
 
-    @RequestMapping(value = "/images/list")
-    public String images(){
+    @RequestMapping(value = "/")
+    public String index(){
+        return "index";
+    }
+
+
+    @RequestMapping(value = "/repository")
+    public String repository(){
         return "repository/repository";
     }
 
 
-    @RequestMapping(value = "/log")
-    public String log(){
-        return "system/log";
+    @RequestMapping(value = "/image")
+    public String image(){
+        return "repository/repository";
     }
+
+
 
 
 }
