@@ -42,6 +42,7 @@ public class RepositoryController {
     public ResponseBean list(@RequestBody PageCommonDTO dto) {//TODO全局异常处理
 
         List<String> nameList = registryComponent.getRepositoryNameList();
+        PageHelper.startPage(dto.getPageCurrent(),dto.getPageSize());
         List<RepositoryListVO> list = new ArrayList<>();
         for(String name:nameList){
             RepositoryListVO vo = new RepositoryListVO();
@@ -54,7 +55,6 @@ public class RepositoryController {
             vo.setSize(5);
             list.add(vo);
         }
-        PageHelper.startPage(dto.getPageCurrent(),dto.getPageSize());
         return ResponseBean.SUCCESS(new PageInfo(list));
     }
 

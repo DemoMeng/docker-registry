@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>镜像仓库管理</title>
-    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
-</head>
-<!--<body class="layui-layout-body">-->
-<table class="layui-hide" id="log-table" lay-filter="test"></table>
-<!--</body>-->
-<script th:src="@{/layui/layui.js}"></script>
-<!--<script th:src="@{/js/utils.js}"></script>-->
-<!--<script th:src="@{/js/token_filter.js}"></script>-->
-<script th:ononline="none">
+<link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
 
-    layui.use(['table'], function() {
+<div class="demoTableThird" style="padding-left: 10px;padding-top:10px">
+        搜索关键字：
+    <div class="layui-inline">
+        <input class="layui-input" name="keyword3" id="demoReload3" autocomplete="off" value="">
+    </div>
+    <button id="btn-reload-3"class="layui-btn" data-type="reload">搜索</button>
+</div>
+<table id="log-table" lay-filter="test"></table>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+
+    layui.use('table', function() {
         let $ = layui.$;
         $(function(){
             //let token = layui.data("tokens").token;
@@ -28,7 +27,7 @@
             table.render({
                 elem: '#log-table'
                 ,method:"POST"
-                ,url: '/repository/list' //数据接口
+                ,url: '/image/tags/list' //数据接口
                 ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                     layout: ['limit','limits', 'count', 'prev','page','next', 'first','last','skip'] //自定义分页布局
                     ,limit:10
@@ -46,13 +45,8 @@
                 /*,headers: {token:token}*/
                 ,cols: [
                     [
-                        {field: 'id', title: 'ID', sort: true, fixed: 'left',width:documentWith*100/1200}
-                        ,{field: 'name', title: '描述',sort: true,width:documentWith*150/1200}
-                        ,{field: 'operatorName', title: '操作人名称',  sort: true,width:documentWith*130/1200}
-                        ,{field: 'createTime', title: '操作时间',width:documentWith*130/1200}
-                        ,{field: 'operateAccount', title: '操作账号',width:documentWith*120/1200}
-                        ,{field: 'operatorRole', title: '操作人角色', sort: true,width:documentWith*180/1200}
-                        ,{field: 'result', title: '结果', sort: true,width:documentWith*200/1200}
+                        {field: 'name', title: "名称", sort: true, fixed: 'left',width: "50%"}
+                        ,{field: 'tags', title: '版本',  sort: true,width: "50%"}
                     ]
                 ]
                 /*,data:[
@@ -75,9 +69,33 @@
                         "data": data.data.list //解析数据列表
                     };
                 }
+                ,id: 'reload1'
             });
+
+            //搜索表格重载
+            let active = {
+                reload: function(){
+                    let demoReload = $('#demoReload3');
+
+                    console.log(demoReload.val());
+                    //执行重载
+                    table.reload('reload1', {
+                        page: {
+                            curr: 1 //重新从第 1 页开始
+                        }
+                        ,where: {
+                            name: demoReload.val()
+                        }
+                    }, 'data');
+                }
+            };
+            $('#btn-reload-3').on('click', function(){
+                let type = $(this).data('type');
+                active[type] ? active[type].call(this) : '';
+            });
+
+
+
         });
     });
 </script>
-</body>
-</html>

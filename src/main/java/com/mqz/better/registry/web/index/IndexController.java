@@ -19,6 +19,11 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping(value = "/index")
+    public String hello(){
+        return "hello";
+    }
+
 
     @RequestMapping(value = "/repository")
     public String repository(){
@@ -28,7 +33,7 @@ public class IndexController {
 
     @RequestMapping(value = "/image")
     public String image(){
-        return "repository/repository";
+        return "image/image";
     }
 
 

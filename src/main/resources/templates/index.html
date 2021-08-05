@@ -44,22 +44,18 @@
         </div>
     </div>
 
-    <div class="layui-body">
+
+
+    <div class="layui-body" >
         <!-- 内容主体区域 -->
         <div style="padding: 15px;">
             <div class="layui-tab" lay-filter="mytab" lay-allowClose="false">
                 <ul class="layui-tab-title">
-                    <li class="layui-this">
-                        <i class="layui-icon">
-                            👋 <cite>控制面板</cite>
-                        </i>
+                    <li class="layui-this"> 👋 <cite>当前操作</cite>
                     </li>
                 </ul>
-                <div class="layui-tab-content">
-                    <div class="layui-tab-item layui-show">
-                        <iframe id="frameAdmin" frameborder="0" width="100%" height="100%" src=""></iframe>
-                    </div>
-                </div>
+                <table style="width: 2000px;height: 700px" id="log-table" lay-filter="test"></table>
+                <!--<iframe style="width: 1250px;height: 850px" id="frameAdmin" frameborder="0" src="" data-url="x"></iframe>-->
             </div>
         </div>
     </div>
@@ -77,16 +73,84 @@
     layui.use(['element','layer'], function() {
         let $ = layui.$,layer = layui.layer;
         $(function(){
+
+
+            //let token = layui.data("tokens").token;
+            //ct();
+            let table = layui.table;
+            let documentWith = $(document).width();
+            let documentHeight = $(document).height();
+            console.log(documentWith);
+            console.log(documentHeight);
+            //第一个实例
+            table.render({
+                elem: '#log-table'
+                //,width:"auto"
+                ,height:"auto"
+                ,method:"POST"
+                ,url: '/repository/list' //数据接口
+                ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                    layout: ['limit','limits', 'count', 'prev','page','next', 'first','last','skip'] //自定义分页布局
+                    ,limit:10
+                    ,limits:[1,5,10,15]
+                    ,groups: 5 //只显示 5 个连续页码
+                }
+                ,request:{
+                    pageName:"pageCurrent",
+                    limitName:"pageSize"
+                }
+                ,contentType:"application/json;charset=UTF-8"
+                ,response: {
+                    statusCode: 10000 //重新规定成功的状态码为 200，table 组件默认为 0
+                }
+                /*,headers: {token:token}*/
+                ,cols: [
+                    [
+                        {field: 'id', title: 'ID', sort: true, fixed: 'left',width:documentWith*100/1200}
+                        ,{field: 'name', title: '描述',sort: true,width:documentWith*300/1200}
+                        ,{field: 'operatorName', title: '操作人名称',  sort: true,width:documentWith*300/1200}
+                        ,{field: 'createTime', title: '操作时间',width:documentWith*200/1200}
+                        ,{field: 'operateAccount', title: '操作账号',width:documentWith*300/1200}
+                        ,{field: 'operatorRole', title: '操作人角色', sort: true,width:documentWith*300/1200}
+                        ,{field: 'result', title: '结果', sort: true,width:documentWith*400/1200}
+                    ]
+                ]
+                /*,data:[
+                    {
+                        "id":"10001"
+                        ,"name": "杜甫"
+                        ,"operatorName": "test@email.com"
+                        ,"createTime": "男"
+                        ,"operateAccount": "浙江杭州"
+                        ,"operatorRole": "人生恰似一场修行"
+                        ,"result": "116"
+                    }
+                ]*/
+                ,parseData:function(data){
+                    console.info(data.data);
+                    return {
+                        "code": data.code, //解析接口状态
+                        "msg": data.msg, //解析提示文本
+                        "count":data.data.total, //解析数据长度
+                        "data": data.data.list //解析数据列表
+                    };
+                }
+            });
+
+
+
+
+
             //仓库
-            $("#repository-menu").on("click",function(e){
-                e.preventDefault();
-                $("#frameAdmin").attr("src","/index/repository");
-            })
-            //镜像
-            $("#image-menu").on("click",function(e){
-                e.preventDefault();
-                $("#frameAdmin").attr("src","/index/image");
-            })
+            // $("#repository-menu").on("click",function(e){
+            //     e.preventDefault();
+            //     $("#frameAdmin").attr("src","/index/repository");
+            // })
+            // //镜像
+            // $("#image-menu").on("click",function(e){
+            //     e.preventDefault();
+            //     $("#frameAdmin").attr("src","/index/image");
+            // })
             /**初始化菜单**/
             // layui.$.ajax({
             //     url:"http://localhost:2008/system/init",
@@ -116,65 +180,74 @@
             //         layui.$.alert('发生未知错误',data.msg);
             //     }
             // });
-        });
 
-        // let element = layui.element
-        //
-        // layui.$(document).on('click', 'a', function () {
-        //     console.log("当前超链接对象；");
-        //     console.log($(this));
-        //     if (!$(this)[0].hasAttribute("tab-id") || $(this).attr("tab-id") === '') {
-        //         return;
-        //     }
-        //     let layId = $(this).attr("tab-id");
-        //     let text = $(this).text();
-        //     let dataUrl = $(this).attr("data-url");
-        //     let tabs = $(".layui-tab-title").children();
-        //     let msg = true;
-        //     $.each(tabs, function (i, item) {
-        //         let tabIds = $(item).attr("lay-id");
-        //         if (tabIds === layId) {
-        //             msg = false;
-        //             return false;
-        //         }
-        //     });
-        //
-        //     if (msg) {
-        //         element.tabAdd('mytab', {
-        //             title: text,
-        //             content: "<iframe frameborder='0' src='" + dataUrl + "'></iframe>",
-        //             id: layId
-        //         });
-        //     }
-        //     resize();
-        //     element.tabChange('mytab', layId);
-        // });
-        //
-        // $(window).on('resize', function () {
-        //     let $content = $(".layui-tab-content");
-        //     $content.height($(this).height() - 200);
-        //     $content.find('iframe').each(function () {
-        //         $(this).height($content.height());
-        //         $(this).width("100%")
-        //     });
-        // });
-        // $(window).on('load', function () {
-        //     let $content = $(".layui-tab-content");
-        //     $content.height($(this).height() - 200);
-        //     $content.find('iframe').each(function () {
-        //         $(this).height($content.height());
-        //         $(this).width("100%")
-        //     });
-        // })
-        //
-        // function resize() {
-        //     let $content = $(".layui-tab-content");
-        //     $content.height($(this).height() - 200);
-        //     $content.find('iframe').each(function () {
-        //         $(this).height($content.height());
-        //         $(this).width("100%")
-        //     })
-        // }
+            //
+            let element = layui.element
+            layui.$(document).on('click', 'a', function () {
+                console.log("当前超链接对象；");
+                console.log($(this));
+                if (!$(this)[0].hasAttribute("tab-id") || $(this).attr("tab-id") === '') {
+                    return;
+                }
+                let layId = $(this).attr("tab-id");
+                let text = $(this).text();
+                let dataUrl = $(this).attr("data-url");
+                let tabs = $(".layui-tab-title").children();
+                let msg = true;
+                $.each(tabs, function (i, item) {
+                    let tabIds = $(item).attr("lay-id");
+                    if (tabIds === layId) {
+                        msg = false;
+                        return false;
+                    }
+                });
+
+                if(1 == layId){
+                    dataUrl = "/index/repository";
+                }
+                if(2 == layId){
+                    dataUrl = "/index/repository";
+                }
+
+
+
+                if (true) {
+                    element.tabAdd('mytab', {
+                        title: text,
+                        content: "<iframe frameborder='0' src='" + dataUrl + "'></iframe>",
+                        id: layId
+                    });
+                }
+                resize();
+                element.tabChange('mytab', layId);
+            });
+
+            $(window).on('resize', function () {
+                let $content = $(".layui-tab-content");
+                $content.height($(this).height() - 200);
+                $content.find('iframe').each(function () {
+                    $(this).height($content.height());
+                    $(this).width("100%")
+                });
+            });
+            $(window).on('load', function () {
+                let $content = $(".layui-tab-content");
+                $content.height($(this).height() - 200);
+                $content.find('iframe').each(function () {
+                    $(this).height($content.height());
+                    $(this).width("100%")
+                });
+            })
+
+            function resize() {
+                let $content = $(".layui-tab-content");
+                $content.height($(this).height() - 200);
+                $content.find('iframe').each(function () {
+                    $(this).height($content.height());
+                    $(this).width("100%")
+                })
+            }
+        });
     });
 </script>
 </body>

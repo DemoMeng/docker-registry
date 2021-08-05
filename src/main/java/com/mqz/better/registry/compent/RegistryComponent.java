@@ -68,6 +68,8 @@ public class RegistryComponent {
         List<String> nameList = new ArrayList<>();
         if(StringUtils.isEmpty(name)){
             nameList = getRepositoryNameList();
+        }else{
+            nameList.add(name);
         }
 
         List<ImageTagVO> imageTagList = new ArrayList<>();
