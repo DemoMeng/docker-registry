@@ -1,0 +1,48 @@
+server:
+  port: 1008
+
+knife4j:
+  # 开启增强配置
+  enable: true
+  #开启Swagger的Basic认证功能,默认是false
+  basic:
+    enable: true
+    username: mqz
+    password: mengqizhang
+#  setting:
+#    #自定义主页
+#    enableHomeCustom: true
+#    homeCustomLocation: classpath:resources/home/welcome.md
+#
+#    #自定义footer
+#    enableFooter: true
+#    enableFooterCustom: true
+#    footerCustomContent: SuperNiuBI License 2.0 | Copyright  2019-[浙江大拿有限公司](https://gitee.com/DemoMeng)
+
+swagger:
+  enable: true
+
+
+docker:
+  registry:
+    url: http://192.168.2.11:5040
+    port: 5040
+
+spring:
+  #resource 静态文件
+  resources:
+    static-locations: classpath:static/,file:static/
+
+  thymeleaf:
+    cache: true
+  #服务器时间时区问题
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true  #开启优化，如果开启优化，在分页页码结果没有数据的时候,会显示有数据的页码数据
+  supportMethodsArguments: true #是否支持接口参数来传递分页参数，默认false
+  pageSizeZero: false #pageSize=0 返回所有
+  params: count=countSql

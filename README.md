@@ -14,11 +14,11 @@
      解决办法： 
         macOS：
 ````
-![img.png](images/img.png)
+![img.png](images/img-0.png)
 ````
         其他：
 ````
-![img_1.png](images/img_1.png)
+![img_1.png](images/img_01.png)
 ````
 ### 推送镜像到私库：
 ````
@@ -58,6 +58,34 @@
      
 
 ````
+
+
+### 制作镜像并且上传到公开库： demomeng/better-registry-web
+
+    1. 制作镜像：
+        前置条件： 
+               springBoot项目，及外部配置文件(后续通过挂载容器内进行启动)
+        a.基于Dockerfile构建一个jar的镜像，参考Dockerfile文件
+        b.执行构建镜像： docker build -t better-restry-images:0.0.1
+![img.png](images/img.png)
+![img_1.png](images/img_1.png)
+
+    2. 发布镜像： 和发布到私库registry一致
+        前置条件：
+                在hub.docker.com 上新建好对应的仓库及撰写overview
+        a. 把本地镜像打成预上传的镜像：  docker image tag better-registry-images:0.0.1 demomeng/docker-regitry-web:0.0.1
+![img_2.png](images/img_2.png)
+
+        b. 推送到hub.docker.com: docker push demomeng/docker-regitry-web
+![img_3.png](images/img_3.png)
+
+     3. 完成： 
+![img_4.png](images/img_4.png)
+
+     4. 后续： 
+           在别的服务器上使用该镜像，构建好docker-better-registry.yml文件即可
+           注意： 
+                需要修改镜像地址！！
 
 
 

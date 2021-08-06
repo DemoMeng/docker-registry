@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  better-registry:
+    image: better-registry-images:0.0.1
+    container_name: better-registry-power-by-mqz
+    ports:
+      - "1008:1008"
+    volumes:
+      - /Applications/mqz/better-registry/out-application.yml:/home/mqz/better-registry-0.0.1/config/application.yml
+#    networks:
+#      - registry
+    privileged: true
+#networks:
+#  registry:
+#    driver: bridge
