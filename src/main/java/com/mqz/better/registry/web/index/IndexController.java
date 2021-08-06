@@ -11,27 +11,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @About： https://github.com/DemoMeng
  */
 @Controller
-@RequestMapping(value = "/index")
+@RequestMapping(value = "/")
 public class IndexController {
 
-    @RequestMapping(value = "/")
-    public String index(){
-        return "index";
+
+    @RequestMapping(value = "")
+    public String index1(){
+        return "hello";
     }
 
     @RequestMapping(value = "/index")
-    public String hello(){
+    public String index2(){
+        return "hello";
+    }
+
+    @RequestMapping(value = "/index/index")
+    public String hello3(){
         return "hello";
     }
 
 
-    @RequestMapping(value = "/repository")
+    @RequestMapping(value = "/index/repository")
     public String repository(){
         return "repository/repository";
     }
 
 
-    @RequestMapping(value = "/image")
+    @RequestMapping(value = "/index/image")
     public String image(){
         return "image/image";
     }

@@ -12,6 +12,7 @@ import com.mqz.better.registry.model.vo.RepositoryListVO;
 import com.mqz.mars.base.page.PageCommonDTO;
 import com.mqz.mars.base.response.ResponseBean;
 import com.mqz.mars.base.utils.OkHttpUtils;
+import com.mqz.mars.base.utils.PageHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -37,12 +38,11 @@ public class RepositoryController {
     @Resource
     private RegistryComponent registryComponent;
 
+
     @ApiOperation(value = "所有仓库列表",httpMethod = "GET")
     @PostMapping(value = "/list")
     public ResponseBean list(@RequestBody PageCommonDTO dto) {//TODO全局异常处理
-
         List<String> nameList = registryComponent.getRepositoryNameList();
-        PageHelper.startPage(dto.getPageCurrent(),dto.getPageSize());
         List<RepositoryListVO> list = new ArrayList<>();
         for(String name:nameList){
             RepositoryListVO vo = new RepositoryListVO();
@@ -55,9 +55,19 @@ public class RepositoryController {
             vo.setSize(5);
             list.add(vo);
         }
-        return ResponseBean.SUCCESS(new PageInfo(list));
+        PageInfo<RepositoryListVO> page = PageHandler.pageList(list, dto.getPageCurrent(), dto.getPageSize());
+        return ResponseBean.SUCCESS(page);
     }
 
+    @ApiOperation(value = "分页不得得劲",httpMethod = "POST")
+    @PostMapping(value = "/page")
+    public ResponseBean page(@RequestBody PageCommonDTO dto) {//TODO全局异常处理
+        //PageHelper.startPage(dto.getPageCurrent(),dto.getPageSize()); //针对mysql分页
+        //对List数据分页
+        List<ImageTagVO> list = registryComponent.getImageTagsList(null);
+        PageInfo<ImageTagVO> pageInfo = PageHandler.pageList(list,dto.getPageCurrent(),dto.getPageSize());
+        return ResponseBean.SUCCESS(pageInfo);
+    }
 
 
 }

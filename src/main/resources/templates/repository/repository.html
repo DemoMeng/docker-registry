@@ -1,19 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>镜像仓库管理</title>
-    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
-</head>
-<!--<body class="layui-layout-body">-->
+<link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
 <table class="layui-hide" id="log-table" lay-filter="test"></table>
-<!--</body>-->
 <script th:src="@{/layui/layui.js}"></script>
-<!--<script th:src="@{/js/utils.js}"></script>-->
-<!--<script th:src="@{/js/token_filter.js}"></script>-->
-<script th:ononline="none">
-
+<script>
     layui.use(['table'], function() {
         let $ = layui.$;
         $(function(){

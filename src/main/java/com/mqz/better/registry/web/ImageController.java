@@ -6,6 +6,7 @@ import com.mqz.better.registry.compent.RegistryComponent;
 import com.mqz.better.registry.model.dto.ImageTagsListDTO;
 import com.mqz.better.registry.model.vo.ImageTagVO;
 import com.mqz.mars.base.response.ResponseBean;
+import com.mqz.mars.base.utils.PageHandler;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -34,10 +35,9 @@ public class ImageController {
     @ApiOperation(value = "镜像版本列表",httpMethod = "GET")
     @PostMapping(value = "/tags/list")
     public ResponseBean list(@RequestBody ImageTagsListDTO dto){
-        PageHelper.startPage(dto.getPageCurrent(),dto.getPageSize());
         List<ImageTagVO> list = registryComponent.getImageTagsList(dto.getName());
-        PageInfo pi = new PageInfo<>(list);
-        return ResponseBean.SUCCESS(pi);
+        PageInfo<ImageTagVO> page = PageHandler.pageList(list, dto.getPageCurrent(), dto.getPageSize());
+        return ResponseBean.SUCCESS(page);
     }
 
 
