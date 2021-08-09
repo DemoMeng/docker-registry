@@ -60,7 +60,7 @@
 ````
 
 
-### 制作镜像并且上传到公开库： demomeng/better-registry-web
+### 制作镜像并且上传到公开库： https://hub.docker.com/r/demomeng/docker-registry-web
 
     1. 制作镜像：
         前置条件： 
