@@ -20,6 +20,9 @@ public class Constant{
         /**  镜像版本名  */
         public final static String image_tag_list = "/tags/list";
 
+        /**  镜像版本名  */
+        public final static String image_manifests = "/manifests/";
+
 
     }
 

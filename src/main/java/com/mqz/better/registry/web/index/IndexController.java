@@ -20,29 +20,31 @@ public class IndexController {
         return "hello";
     }
 
-    @RequestMapping(value = "/index")
+    @RequestMapping(value = "index")
     public String index2(){
         return "hello";
     }
 
-    @RequestMapping(value = "/index/index")
+    @RequestMapping(value = "index/index")
     public String hello3(){
         return "hello";
     }
 
 
-    @RequestMapping(value = "/index/repository")
+    @RequestMapping(value = "index/repository")
     public String repository(){
         return "repository/repository";
     }
 
 
-    @RequestMapping(value = "/index/image")
+    @RequestMapping(value = "index/image")
     public String image(){
         return "image/image";
     }
 
-
-
+    @RequestMapping(value = "index/image/tag/detail")
+    public String imageTagDetail(){
+        return "image/image-detail";
+    }
 
 }

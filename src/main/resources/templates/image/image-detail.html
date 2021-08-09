@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
+<div style="margin-left: 15px;margin-right: 15px;margin-top: 20px;">
+    <form class="layui-form layui-form-pane"  action="#">
+        <div class="layui-form-item">
+            <label class="layui-form-label">名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="name" readonly autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">版本</label>
+            <div class="layui-input-block">
+                <input type="text" name="tag" readonly autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">架构版本</label>
+            <div class="layui-input-block">
+                <input type="text" name="schemaVersion" readonly autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">架构信息</label>
+            <div class="layui-input-block">
+                <input type="text" name="architecture" readonly autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">fs层信息</label>
+            <div class="layui-input-block">
+                <textarea id="fsLayers" name="fsLayers" readonly class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">签名信息</label>
+            <div class="layui-input-block">
+                <textarea name="signatures" readonly class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item layui-form-text">
+            <label class="layui-form-label">历史记录</label>
+            <div class="layui-input-block">
+                <textarea name="history" readonly class="layui-textarea"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+<script th:src="@{/layui/layui.js}"></script>
+<script>
+
+    function init(name,tag){
+        layui.use('table', function() {
+            let data = {
+                "name": name,
+                "tag": tag
+            };
+            layui.$.ajax({
+                url: "/image/tags/detail",
+                data: JSON.stringify(data),
+                type: "POST",
+                async: true,
+                dataType: "JSON",
+                contentType: "application/json;charset=UTF-8",
+                success: function (data) {
+                    console.log(data);
+                    let code = data.code;
+                    if (code == 10000) {
+                        layui.$("input[name='name']").val(data.data.name);
+                        layui.$("input[name='tag']").val(data.data.tag);
+                        layui.$("input[name='architecture']").val(data.data.architecture);
+                        layui.$("input[name='schemaVersion']").val(data.data.schemaVersion);
+                        layui.$("textarea[name='fsLayers']").html(JSON.stringify(data.data.signatures));
+                        layui.$("textarea[name='signatures']").html(JSON.stringify(data.data.signatures));
+                        layui.$("textarea[name='history']").html(JSON.stringify(data.data.history));
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                },
+                error: function (data) {
+                    layui.$.alert('发生未知错误', data.msg);
+                }
+            });
+        });
+    }
+</script>

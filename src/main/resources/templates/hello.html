@@ -54,25 +54,25 @@
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">系统管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">配置</a></dd>
-                        <dd><a href="javascript:;">设置</a></dd>
+                        <dd><a href="javascript:;" tab-id="system-config">配置</a></dd>
+                        <dd><a href="javascript:;" tab-id="system-setting">设置</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">账号管理</a>
                     <dl class="layui-nav-child">
-                        <dd><a href="javascript:;">列表</a></dd>
-                        <dd><a href="javascript:;">详情</a></dd>
+                        <dd><a href="javascript:;" tab-id="account-list">列表</a></dd>
+                        <dd><a href="javascript:;" tab-id="account-detail">详情</a></dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="javascript:;">日志管理</a></li>
-                <li class="layui-nav-item"><a href="">角色管理</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" tab-id="log">日志管理</a></li>
+                <li class="layui-nav-item"><a href="" tab-id="role">角色管理</a></li>
             </ul>
         </div>
     </div>
 
     <div class="layui-body">
-        <iframe id="frameAdmin" style="padding-left:10px;width: 95%;height: 95%" frameborder="0" src="" data-url=""></iframe>
+        <iframe id="frameAdmin" style="padding-left:10px;width: 95%;height: 95%" frameborder="0" src="" data-url="https://demomeng.github.io/"></iframe>
     </div>
     <div class="layui-footer">
         <!-- 底部固定区域 -->
@@ -92,28 +92,24 @@
             let layId = $(this).attr("tab-id");
             let text = $(this).text();
             let dataUrl = $(this).attr("data-url");
-
+            if("account-list" == layId){
+                layer.open({
+                    type: 1
+                    ,content: "<b>该功能暂为开通，是否催更？</b>"
+                    ,area: ['350px', '250px']
+                    ,offset: 'auto' //右上角
+                    ,anim: 2
+                    ,shadeClose: true
+                });
+            }
+            if("account-detail" == layId){
+                layer.msg('正在开发中...', {icon: 6});
+            }
             if("repository" == layId){
                 $("#frameAdmin").attr("src","/index/repository");
-                // layer.open({
-                //     type: 2
-                //     ,content: "/index/repository"
-                //     ,area: ['550px', '450px']
-                //     ,offset: 'auto' //右上角
-                //     ,anim: 5
-                //     ,shadeClose: true
-                // });
             }
             if("image" == layId){
                 $("#frameAdmin").attr("src","/index/image");
-                // layer.open({
-                //     type: 2
-                //     ,content: "/index/image"
-                //     ,area: ['550px', '450px']
-                //     ,offset: 'auto' //右上角
-                //     ,anim: 5
-                //     ,shadeClose: true
-                // });
             }
 
 

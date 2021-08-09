@@ -5,11 +5,15 @@ import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.mqz.better.registry.common.ConfigProperty;
 import com.mqz.better.registry.common.Constant;
+import com.mqz.better.registry.model.dto.ImageTagDetailDTO;
+import com.mqz.better.registry.model.dto.ImageTagsListDTO;
+import com.mqz.better.registry.model.vo.ImageTagDetailVO;
 import com.mqz.better.registry.model.vo.ImageTagVO;
 import com.mqz.better.registry.model.vo.RepositoryListVO;
 import com.mqz.mars.base.utils.OkHttpUtils;
 import com.mqz.mars.validation.exceptions.ServicesException;
 import org.springframework.stereotype.Component;
+import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -88,10 +92,36 @@ public class RegistryComponent {
             }
             if(!StringUtils.isEmpty(result)){
                 ImageTagVO vo = JSONUtil.toBean(result, ImageTagVO.class);
-                imageTagList.add(vo);
+                for(String tag : vo.getTags()){
+                    ImageTagVO ito = new ImageTagVO();
+                    ito.setName(searchName);
+                    ito.setTags(new ArrayList<String>(){{add(tag);}});
+                    imageTagList.add(ito);
+                }
             }
         }
         return imageTagList;
     }
 
+    public ImageTagDetailVO getImageTagDetail(ImageTagDetailDTO dto) {
+        StringBuffer url = new StringBuffer(configProperty.getRegistryUrl());
+        url.append(Constant.DockerRegistry.head);
+        url.append("/");
+        url.append(dto.getName());
+        url.append(Constant.DockerRegistry.image_manifests);
+        url.append(dto.getTag());
+        String result = null;
+        try {
+            result = OkHttpUtils.get(url.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new ServicesException("调用registry的api接口异常");
+        }
+
+        if(StringUtils.isEmpty(result)){
+           throw new ServicesException("http调用异常");
+        }
+        ImageTagDetailVO vo = JSONUtil.toBean(result, ImageTagDetailVO.class);
+        return vo;
+    }
 }
