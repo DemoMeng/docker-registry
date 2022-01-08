@@ -21,6 +21,14 @@
     </properties>
     <dependencies>
 
+        <!-- 新的swaggerui皮肤 -->
+        <!-- 暂时无法使用，没去研究 2022-01-08  -->
+        <!--<dependency>
+            <groupId>com.tennetcn.free</groupId>
+            <artifactId>think-swagger-ui-starter</artifactId>
+            <version>0.0.4</version>
+        </dependency>-->
+
         <!-- web依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

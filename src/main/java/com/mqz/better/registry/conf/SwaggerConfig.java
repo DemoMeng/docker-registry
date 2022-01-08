@@ -1,6 +1,7 @@
 package com.mqz.better.registry.conf;
 
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,7 +37,8 @@ public class SwaggerConfig {
                 .apiInfo(apiInfo())
                 .groupName("管理功能")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.mqz.better.registry.web"))
+                //.apis(RequestHandlerSelectors.basePackage("com.mqz.better.registry.web"))
+                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))
                 .paths(PathSelectors.any())
                 //.paths(PathSelectors.ant("/api/**"))
                 .build();
