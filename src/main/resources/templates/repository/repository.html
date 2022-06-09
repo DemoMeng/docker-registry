@@ -1,34 +1,28 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-    <title>镜像仓库管理</title>
-    <link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
-</head>
-<body class="layui-layout-body">
-        <table id="log-table" lay-filter="test"></table>
-</body>
+<link th:href="@{/layui/css/layui.css}" rel="stylesheet" />
+<table class="layui-hide" id="log-table" lay-filter="test"></table>
 <script th:src="@{/layui/layui.js}"></script>
-<script th:src="@{/js/utils.js}"></script>
-<script th:src="@{/js/token_filter.js}"></script>
-<script th:ononline="none">
-
-    layui.use('table', function() {
+<script>
+    layui.use(['table'], function() {
         let $ = layui.$;
         $(function(){
             //let token = layui.data("tokens").token;
             //ct();
             let table = layui.table;
+            let documentWith = $(document).width();
+            let documentHeight = $(document).height();
+            console.log(documentWith);
+            console.log(documentHeight);
             //第一个实例
             table.render({
                 elem: '#log-table'
                 ,method:"POST"
-                ,url: 'http://localhost:2008/repository/list' //数据接口
+                ,url: '/repository/list' //数据接口
                 ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
                     layout: ['limit','limits', 'count', 'prev','page','next', 'first','last','skip'] //自定义分页布局
                     ,limit:10
-                    ,limits:[5,10,15,20]
+                    ,limits:[1,5,10,15]
                     ,groups: 5 //只显示 5 个连续页码
                 }
                 ,request:{
@@ -42,24 +36,33 @@
                 /*,headers: {token:token}*/
                 ,cols: [
                     [
-                        {field: 'id', title: 'ID', sort: true, fixed: 'left'}
-                        ,{field: "name", title: '描述',sort: true}
-                        ,{field: 'operatorName', title: '操作人名称',  sort: true}
-                        ,{field: 'createTime', title: '操作时间'}
-                        ,{field: 'operateAccount', title: '操作账号'}
-                        ,{field: 'operatorRole', title: '操作人角色', sort: true}
-                        ,{field: 'result', title: '结果', sort: true}
+                        {field: 'id', title: 'ID', sort: true, fixed: 'left',width:documentWith*100/1200}
+                        ,{field: 'name', title: '描述',sort: true,width:documentWith*150/1200}
+                        ,{field: 'operatorName', title: '操作人名称',  sort: true,width:documentWith*130/1200}
+                        ,{field: 'createTime', title: '操作时间',width:documentWith*130/1200}
+                        ,{field: 'operateAccount', title: '操作账号',width:documentWith*120/1200}
+                        ,{field: 'operatorRole', title: '操作人角色', sort: true,width:documentWith*180/1200}
+                        ,{field: 'result', title: '结果', sort: true,width:documentWith*200/1200}
                     ]
                 ]
+                /*,data:[
+                    {
+                        "id":"10001"
+                        ,"name": "杜甫"
+                        ,"operatorName": "test@email.com"
+                        ,"createTime": "男"
+                        ,"operateAccount": "浙江杭州"
+                        ,"operatorRole": "人生恰似一场修行"
+                        ,"result": "116"
+                    }
+                ]*/
                 ,parseData:function(data){
-
                     console.info(data.data);
-                    console.info(data.data.msg);
                     return {
-                        "statusCode": data.code, //解析接口状态
+                        "code": data.code, //解析接口状态
                         "msg": data.msg, //解析提示文本
-                        "count":data.data.size, //解析数据长度
-                        "data": data.data //解析数据列表
+                        "count":data.data.total, //解析数据长度
+                        "data": data.data.list //解析数据列表
                     };
                 }
             });
