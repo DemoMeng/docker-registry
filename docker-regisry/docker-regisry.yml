@@ -3,15 +3,16 @@ services:
   registry:
     image: registry:latest
     container_name: registry-by-mqz
-    #environment:
-    #  - I18N_LOCALE=zh-CN
     ports:
       - "5040:5000"
     volumes:
       - /root/mqz/docker-registry/docker-dir:/var/lib/registry
+    privileged: true
+    #environment:
+    #  - I18N_LOCALE=zh-CN
     #networks:
     #  - kibana
-    privileged: true
+
 #networks:
 #  kibana:
 #    driver: bridge
